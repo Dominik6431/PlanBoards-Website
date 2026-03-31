@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0d1830"/><stop offset="1" stop-color="#0a1222"/></linearGradient></defs>
+<rect width="1200" height="1500" rx="48" fill="url(#g)"/>
+<rect x="60" y="60" width="1080" height="1380" rx="36" fill="none" stroke="rgba(255,255,255,.18)" stroke-dasharray="14 14"/>
+<text x="600" y="700" text-anchor="middle" fill="#d8e2fb" font-family="Arial, Helvetica, sans-serif" font-size="58">Placeholder image</text>
+<text x="600" y="800" text-anchor="middle" fill="#9fb1d9" font-family="Arial, Helvetica, sans-serif" font-size="40">Light & dark mode</text>
+</svg>
