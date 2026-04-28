@@ -153,6 +153,51 @@ img,video{max-width:100%;display:block}
 .hero-copy-modern{padding:24px 0 12px}
 .hero-copy-modern h1{margin:14px 0 16px; max-width:700px}
 .hero-copy-modern p{max-width:690px}
+.hero-flow{
+  max-width:1100px;
+}
+.hero-copy-flow{
+  margin:0 auto;
+  text-align:center;
+  max-width:1000px;
+  width:100%;
+}
+.hero-copy-flow h1{
+  white-space:nowrap;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  max-width:none;
+}
+.hero-copy-flow > p{
+  width:min(82ch, 100%);
+  max-width:none;
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero-video-block{
+  margin:24px auto 16px;
+  width:940px;
+  max-width:100%;
+}
+.hero-video-block .yt-wrap{
+  width:940px;
+  max-width:100%;
+  margin:0 auto;
+}
+.hero-video-head{
+  display:block;
+  text-align:center;
+  margin-bottom:12px;
+}
+.hero-video-head h2{
+  margin-bottom:10px;
+}
+.hero-video-head p{
+  text-align:center;
+  margin:0 auto;
+  max-width:none;
+}
 .hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
 .hero-metrics div{padding:0 18px 0 0;border-right:1px solid rgba(255,255,255,.08)}
 .hero-metrics div:last-child{border-right:none;padding-right:0}
@@ -193,13 +238,48 @@ img,video{max-width:100%;display:block}
 .modern-content-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:30px;align-items:center}
 .visual-wide .desktop-shot{width:100%}
 .copy-list{padding-left:10px}
+.device-showcase-grid{
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:34px;
+  align-items:center;
+}
+.device-showcase-copy h2{
+  margin:14px 0 12px;
+  font-size:clamp(1.9rem,3vw,3.1rem);
+  font-weight:500;
+  line-height:1.12;
+}
+.device-showcase-copy .body-copy{
+  margin:0 0 10px;
+}
+.cta-row-stores{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1rem;
+}
+.store-buttons{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  gap:72px;
+}
+.store-badge img{
+  height:72px;
+  width:auto;
+}
+.cta-row-stores .btn.primary{
+  margin-top:1rem;
+}
 @media (max-width: 1180px){
   .hero-grid-modern{grid-template-columns:1fr}
   .hero-stage{min-height:720px;margin-top:8px}
   .desktop-main{width:84%}
 }
 @media (max-width: 980px){
-  .inline-stats,.feature-flow-grid,.modern-duo-grid,.modern-content-grid,.hero-metrics{grid-template-columns:1fr}
+  .inline-stats,.feature-flow-grid,.modern-duo-grid,.modern-content-grid,.hero-metrics,.device-showcase-grid{grid-template-columns:1fr}
   .hero-metrics div,.inline-stat{border-right:none;padding-right:0}
   .hero-stage{min-height:620px}
   .desktop-main{width:82%;right:2%}
@@ -216,6 +296,15 @@ img,video{max-width:100%;display:block}
   .desktop-main{position:relative;width:100%;top:auto;right:auto}
   .phone-left,.phone-right,.floating-caption,.orb{display:none}
   .feature-image-tall{min-height:auto}
+  .hero-copy-flow h1{
+    white-space:normal;
+  }
+  .store-buttons{
+    gap:20px;
+  }
+  .store-badge img{
+    height:56px;
+  }
 }
 
 
@@ -478,7 +567,7 @@ img,video{max-width:100%;display:block}
 
 /* V11 right-side hero refinements */
 .hero-stage-device-composition{
-  min-height: 760px;
+  min-height: 880px;
 }
 .composition-label{
   display:none !important;
@@ -600,4 +689,53 @@ img,video{max-width:100%;display:block}
   }
   .tablet-frame{top:auto;right:auto;margin:0 auto 20px}
   .phone-frame{top:auto;left:auto;margin:0 auto 20px}
+}
+
+/* Contact form */
+.contact-shell{
+  max-width:760px;
+}
+.contact-form .panel-body{
+  display:grid;
+  gap:10px;
+}
+.contact-form label{
+  color:#d5def2;
+  font-size:.95rem;
+  margin-top:8px;
+}
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:12px;
+  color:var(--text);
+  padding:12px 14px;
+  font:inherit;
+}
+.contact-form textarea{
+  min-height:150px;
+  resize:vertical;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline:none;
+  border-color:rgba(110,168,255,.7);
+  box-shadow:0 0 0 3px rgba(110,168,255,.2);
+}
+.contact-form .btn[disabled]{
+  opacity:.65;
+  cursor:not-allowed;
+}
+.contact-status{
+  margin:4px 0 0;
+  min-height:1.4em;
+  color:#9fc0ff;
+}
+.contact-status.error{
+  color:#ff9f9f;
+}
+.contact-status.success{
+  color:#9fe2bc;
 }
