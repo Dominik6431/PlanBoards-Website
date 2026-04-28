@@ -143,7 +143,7 @@ img,video{max-width:100%;display:block}
 
 /* V8 homepage refresh */
 .hero-modern{
-  padding:72px 0 26px;
+  padding:5px 0 26px;
   background:
     radial-gradient(circle at 15% 12%, rgba(70,110,255,.22), transparent 24%),
     radial-gradient(circle at 88% 10%, rgba(0,204,255,.15), transparent 18%),
