@@ -484,7 +484,7 @@ img,video{max-width:100%;display:block}
 }
 @media (max-width: 1180px){
   .hero-stage-device-composition{
-    min-height:680px;
+    min-height:900px;
   }
   .composition-label{
     left:4%;
@@ -594,7 +594,7 @@ img,video{max-width:100%;display:block}
 .laptop-shell{
   left: 6%;
   right: 0;
-  bottom: 8px;
+  bottom: -40px;
 }
 .laptop-lid{
   border-radius: 30px 30px 18px 18px;
@@ -672,7 +672,7 @@ img,video{max-width:100%;display:block}
   bottom: 20%;
 }
 @media (max-width: 1180px){
-  .hero-stage-device-composition{min-height:720px}
+  .hero-stage-device-composition{min-height:900px}
   .tablet-frame{top:20px;width:66%}
   .phone-frame{top:24px;width:38%}
 }
@@ -738,4 +738,60 @@ img,video{max-width:100%;display:block}
 }
 .contact-status.success{
   color:#9fe2bc;
+}
+
+/* V12 — clean grid layout for device showcase to prevent overlap */
+.hero-stage-device-composition{
+  display:grid !important;
+  grid-template-columns: 36% 1fr !important;
+  grid-template-rows: auto auto !important;
+  gap: 40px 22px !important;
+  align-items: start !important;
+  min-height: auto !important;
+  padding-bottom: 30px !important;
+  position: relative;
+}
+.hero-stage-device-composition .phone-frame,
+.hero-stage-device-composition .tablet-frame,
+.hero-stage-device-composition .laptop-shell{
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  z-index: auto !important;
+  transform: none !important;
+}
+.hero-stage-device-composition .phone-frame{
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  align-self: start !important;
+}
+.hero-stage-device-composition .tablet-frame{
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  align-self: start !important;
+}
+.hero-stage-device-composition .laptop-shell{
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
+  margin-top: 30px !important;
+}
+@media (max-width: 680px){
+  .hero-stage-device-composition{
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    gap: 18px !important;
+  }
+  .hero-stage-device-composition .phone-frame,
+  .hero-stage-device-composition .tablet-frame,
+  .hero-stage-device-composition .laptop-shell{
+    grid-column: 1 !important;
+  }
+  .hero-stage-device-composition .tablet-frame{ grid-row: 1 !important; }
+  .hero-stage-device-composition .phone-frame{ grid-row: 2 !important; width: 70% !important; margin: 0 auto !important; }
+  .hero-stage-device-composition .laptop-shell{ grid-row: 3 !important; }
 }
