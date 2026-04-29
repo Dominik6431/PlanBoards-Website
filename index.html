@@ -15,7 +15,7 @@
   <title>PlanBoards - Organize your life. Visually.</title>
   <meta name="description" content="PlanBoards: ToDo & Notes">
   <link rel="icon" href="assets/Logo-Square-512px-Image.png">
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <header class="site-header">
@@ -98,23 +98,23 @@
 
 <section class="section-tight premium-section">
   <div class="container device-showcase-grid">
-    <div class="hero-stage hero-stage-device-composition">
-      <div class="orb orb-a"></div>
-      <div class="orb orb-b"></div>
+    <div class="hero-stage hero-stage-device-composition" style="display:grid; grid-template-columns:36% 1fr; grid-template-rows:auto auto; gap:40px 22px; align-items:start; min-height:auto; padding-bottom:30px; position:relative;">
+      <div class="orb orb-a" style="position:absolute"></div>
+      <div class="orb orb-b" style="position:absolute"></div>
 
-      <div class="device-frame tablet-frame">
+      <div class="device-frame tablet-frame" style="position:relative; top:auto; left:auto; right:auto; bottom:auto; width:100%; margin:0; grid-column:2; grid-row:1; align-self:start; transform:none; z-index:auto;">
         <div class="tablet-screen-wrap">
           <img class="tablet-screen" src="assets/Tablet-View.png" alt="PlanBoards tablet view">
         </div>
       </div>
 
-      <div class="device-frame phone-frame">
+      <div class="device-frame phone-frame" style="position:relative; top:auto; left:auto; right:auto; bottom:auto; width:100%; margin:0; grid-column:1; grid-row:1; align-self:start; transform:none; z-index:auto;">
         <div class="phone-screen-wrap">
           <img class="phone-screen" src="assets/Home-screen.png" alt="PlanBoards mobile boards screen">
         </div>
       </div>
 
-      <div class="laptop-shell">
+      <div class="laptop-shell" style="position:relative; top:auto; left:auto; right:auto; bottom:auto; width:100%; margin:30px 0 0 0; grid-column:1 / -1; grid-row:2; transform:none; z-index:auto;">
         <div class="laptop-lid">
           <div class="laptop-camera"></div>
           <div class="laptop-screen-wrap">
@@ -140,9 +140,9 @@
   </div>
 </section>
 
-<section class="section modern-duo">
+<section class="section duo-anywhere">
   <div class="container">
-    <div class="modern-duo-grid">
+    <div class="duo-anywhere-grid">
       <div class="copy-block">
         <div class="badge">Mobile + Desktop</div>
         <h2>Plan anywhere, continue everywhere.</h2>
@@ -160,7 +160,7 @@
   </div>
 </section>
 
-<section class="section modern-duo">
+<section class="section duo-inside-card">
   <div class="container">
     <div class="section-head">
       <h2>Everything you need inside each card.</h2>

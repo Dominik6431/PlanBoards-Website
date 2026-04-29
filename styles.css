@@ -55,7 +55,7 @@ img,video{max-width:100%;display:block}
 .stat strong{display:block;font-size:1.45rem;font-weight:550;letter-spacing:-.03em}
 .stat span{color:var(--muted);font-size:.94rem}
 .section{padding:62px 0}
-.section-tight{padding:46px 0}
+.section-tight{padding:46px 0 170px}
 .section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:20px}
 .section-head h2{font-size:clamp(1.9rem,3vw,3rem);line-height:1.12;letter-spacing:0;font-weight:500;margin:0}
 .section-head p{max-width:660px;color:var(--muted);margin:0}
@@ -740,6 +740,24 @@ img,video{max-width:100%;display:block}
   color:#9fe2bc;
 }
 
+/* V13 — separated modern-duo into two unique sections */
+.duo-anywhere{padding-top:70px}
+.duo-anywhere-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center}
+.duo-anywhere .copy-block{transform:translateY(-30px)}
+.duo-anywhere .copy-block h2{margin:14px 0 12px;font-size:clamp(1.9rem,3vw,3.1rem);font-weight:500;line-height:1.12;letter-spacing:0}
+.duo-anywhere .visual-block{position:relative;min-height:420px}
+.duo-anywhere .visual-block .desktop-shot{width:88%;margin-left:auto}
+.duo-anywhere .overlap-phone{position:absolute;left:0;bottom:-10px;max-height:620px}
+.duo-inside-card{padding-top:70px}
+.duo-inside-card .modern-content-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:30px;align-items:center}
+.duo-inside-card .visual-wide .desktop-shot{width:100%}
+.duo-inside-card .copy-list{padding-left:10px}
+@media (max-width: 980px){
+  .duo-anywhere-grid,.duo-inside-card .modern-content-grid{grid-template-columns:1fr}
+  .duo-anywhere .visual-block .desktop-shot{width:100%;margin-left:0}
+  .duo-anywhere .overlap-phone{position:relative;left:auto;bottom:auto;margin:18px auto 0}
+}
+
 /* V12 — clean grid layout for device showcase to prevent overlap */
 .hero-stage-device-composition{
   display:grid !important;
@@ -778,7 +796,7 @@ img,video{max-width:100%;display:block}
 .hero-stage-device-composition .laptop-shell{
   grid-column: 1 / -1 !important;
   grid-row: 2 !important;
-  margin-top: 30px !important;
+  margin-top: -17px !important;
 }
 @media (max-width: 680px){
   .hero-stage-device-composition{
