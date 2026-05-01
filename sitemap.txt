@@ -1,7 +1,7 @@
-https://www.planboardsapp.com/index.html
-https://www.planboardsapp.com/personal.html
-https://www.planboardsapp.com/family.html
-https://www.planboardsapp.com/sme-projects.html
-https://www.planboardsapp.com/sharing-cards.html
-https://www.planboardsapp.com/features.html
-https://www.planboardsapp.com/pricing.html
+https://www.planboardsapp.com
+https://www.planboardsapp.com/personal
+https://www.planboardsapp.com/family
+https://www.planboardsapp.com/sme-projects
+https://www.planboardsapp.com/sharing-cards
+https://www.planboardsapp.com/features
+https://www.planboardsapp.com/pricing
