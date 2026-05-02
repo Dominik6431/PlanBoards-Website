@@ -73,7 +73,7 @@ img,video{max-width:100%;display:block}
 .list-clean{padding-left:18px;margin:0}.list-clean li{margin:8px 0;color:var(--muted)}
 .yt-wrap{position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#000}
 .yt-wrap iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
-.yt-wrap::after{content:"";position:absolute;top:0;left:68px;right:68px;height:60px;background:linear-gradient(to bottom, #000 0%, #000 80%, rgba(0,0,0,0) 100%);pointer-events:none;z-index:2}
+/*.yt-wrap::after{content:"";position:absolute;top:0;left:68px;right:68px;height:60px;background:linear-gradient(to bottom, #000 0%, #000 80%, rgba(0,0,0,0) 100%);pointer-events:none;z-index:2} */
 .logo-strip{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .logo-pill{padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#d5e0fa}
 .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:820px}
