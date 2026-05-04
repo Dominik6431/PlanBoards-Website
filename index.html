@@ -11,7 +11,7 @@
   gtag('config', 'G-1L07Q19XT3');
   gtag('config', 'AW-17600102993');
 </script>
-<!-- Event snippet for ItemClicked conversion page -->
+<!-- Event snippet for ItemClicked + Outbound click (1) conversions -->
 <script>
 function gtag_report_conversion(url) {
   var callback = function () {
@@ -20,7 +20,10 @@ function gtag_report_conversion(url) {
     }
   };
   gtag('event', 'conversion', {
-      'send_to': 'AW-17600102993/PfFlCK_er6UcENGEschB',
+      'send_to': [
+        'AW-17600102993/PfFlCK_er6UcENGEschB',
+        'AW-17600102993/-7dKCJnsoqccENGEschB'
+      ],
       'event_callback': callback
   });
   return false;

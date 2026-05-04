@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!target) return;
     if (typeof gtag_report_conversion !== 'function') return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button > 0) return;
-    if (target.target === '_blank') return;
+    if (target.target === '_blank') {
+      // Let the browser open the new tab; just fire the conversion event.
+      gtag_report_conversion();
+      return;
+    }
     e.preventDefault();
     gtag_report_conversion(target.href);
   });
