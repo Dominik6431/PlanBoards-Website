@@ -47,19 +47,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
+  // Section reveal animation.
+  // Behavior: any section currently in the viewport (or within ~200px below it)
+  // is revealed immediately. Once the user scrolls ~100px from the top, every
+  // remaining section is revealed in one pass. This gives a snappy, consistent
+  // experience on both mobile and desktop and avoids "stuck blank" sections.
+  const revealEls = document.querySelectorAll('.hero, .page-hero, .section, .section-tight, .premium-section');
+  revealEls.forEach((el) => el.classList.add('reveal'));
+  // Only now do we let CSS hide the un-revealed sections — guarantees that if
+  // JS ever fails to run, content remains visible.
+  document.documentElement.classList.add('js-reveal-ready');
+
+  const showNearViewport = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    revealEls.forEach((el) => {
+      if (el.classList.contains('in-view')) return;
+      const rect = el.getBoundingClientRect();
+      // Reveal if any part is within the viewport plus a 200px lookahead.
+      if (rect.top < vh + 200 && rect.bottom > -200) {
+        el.classList.add('in-view');
       }
     });
-  }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
+  };
 
-  document.querySelectorAll('.hero, .page-hero, .section, .section-tight, .premium-section').forEach((el) => {
-    el.classList.add('reveal');
-    observer.observe(el);
-  });
+  const revealAll = () => {
+    revealEls.forEach((el) => el.classList.add('in-view'));
+  };
+
+  // Initial paint: reveal anything already on screen.
+  showNearViewport();
+
+  let allRevealed = false;
+  const onScroll = () => {
+    if (allRevealed) return;
+    if (window.scrollY > 100) {
+      // After 100px of scrolling, just reveal everything in one go.
+      allRevealed = true;
+      revealAll();
+      window.removeEventListener('scroll', onScroll);
+      return;
+    }
+    showNearViewport();
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Safety net: if anything is still hidden after 1.5s (e.g. fonts/images
+  // shifting layout, slow first paint), reveal it so content is never stuck.
+  setTimeout(showNearViewport, 200);
+  setTimeout(revealAll, 1500);
 
   const contactForm = document.querySelector('[data-contact-form]');
   if (contactForm) {
