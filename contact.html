@@ -34,7 +34,7 @@ function gtag_report_conversion(url) {
   <title>PlanBoards Contact us</title>
   <meta name="description" content="Contact PlanBoards">
   <link rel="icon" href="assets/Logo-Square-512px-Image.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=18">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
@@ -70,7 +70,16 @@ function gtag_report_conversion(url) {
         <label for="contact-message">Message</label>
         <textarea id="contact-message" name="message" required maxlength="2000"></textarea>
 
-        <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
+        <!--
+          Cloudflare Turnstile CAPTCHA widget. The site key below is Cloudflare's
+          OFFICIAL TEST KEY (1x00000000000000000000AA) — it renders a visible
+          widget that always passes verification. Use it as-is for now so the
+          form works. For real spam protection: create a Turnstile widget at
+          https://dash.cloudflare.com/?to=/:account/turnstile, replace the
+          site key here, and set TURNSTILE_SECRET_KEY in Vercel env vars to
+          the matching secret key.
+        -->
+        <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="dark"></div>
 
         <button class="btn primary" type="submit">Send message</button>
         <p class="contact-status" data-contact-status aria-live="polite"></p>
@@ -80,6 +89,6 @@ function gtag_report_conversion(url) {
 </section>
 
 <footer class="footer"><div class="container">PlanBoards: ToDo & Notes • Visual task management for life, family, and work.</div></footer>
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>
