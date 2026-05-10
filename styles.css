@@ -106,6 +106,7 @@ img,video{max-width:100%;display:block}
   .card-c{width:74%;right:4%;bottom:4%}
 }
 @media (max-width: 560px){
+  .container{width:min(100% - 20px, 1180px)}
   .hero-art{min-height:520px}
   .stack-card{border-radius:22px}
   .card-caption{font-size:.86rem}
@@ -133,13 +134,9 @@ img,video{max-width:100%;display:block}
 .placeholder-shot.small{aspect-ratio:16/10;min-height:220px}
 .feature-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px}
 .feature-gallery .feature-card p{min-height:48px}
-/* Sections animate from a soft hidden state to full visibility. The hidden
-   state only applies once JS has marked the page as ready (.js-reveal-ready
-   on <html>) — so if JS ever fails or is slow, content stays visible. */
-.reveal{transition:opacity .7s ease, transform .7s ease, filter .7s ease}
-.js-reveal-ready .reveal{opacity:0;transform:translateY(20px);filter:blur(6px)}
-.js-reveal-ready .reveal.in-view{opacity:1;transform:none;filter:none}
-@media (prefers-reduced-motion: reduce){.js-reveal-ready .reveal{opacity:1;transform:none;filter:none;transition:none}}
+.reveal{opacity:0;transform:translateY(20px);filter:blur(6px);transition:opacity .7s ease, transform .7s ease, filter .7s ease}
+.reveal.in-view{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}}
 @media (max-width: 1100px){.feature-gallery{grid-template-columns:repeat(2,1fr)}.crop-desktop-hero{height:380px}}
 @media (max-width: 860px){.hero-panel{display:none}.feature-gallery{grid-template-columns:1fr}.hero-art{min-height:620px}.stack-card .crop-phone-tight{max-height:640px}.crop-desktop-hero{height:320px}}
 @media (max-width: 560px){.section-surface{padding:18px;border-radius:24px}.hero h1,.page-hero h1{line-height:1.12}.hero-art{min-height:500px}}
@@ -293,18 +290,6 @@ img,video{max-width:100%;display:block}
   .caption-right{right:2%;bottom:16%}
   .visual-block .desktop-shot{width:100%;margin-left:0}
   .overlap-phone{position:relative;left:auto;bottom:auto;margin:18px auto 0}
-}
-/* Mobile: give every section a 30px breathing margin from the screen edges
-   so headlines and body copy never sit flush against the side. Applies to
-   every page (.container is used everywhere). Uses padding (not width) so it
-   wins regardless of what other rules do to .container's width. */
-@media (max-width: 760px){
-  .container{
-    width:auto !important;
-    max-width:100% !important;
-    padding-left:30px !important;
-    padding-right:30px !important;
-  }
 }
 @media (max-width: 680px){
   .hero-modern{padding-top:46px}
