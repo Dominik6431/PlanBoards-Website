@@ -69,6 +69,47 @@ function gtag_report_conversion(url) {
       border:0;
       display:block;
     }
+    .yt-play-overlay{
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      background:#000;
+      border:0; padding:0; margin:0; cursor:pointer;
+      overflow:hidden;
+      transition:opacity .35s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .yt-play-overlay .yt-poster-img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      z-index:0;
+    }
+    /* Dark radial scrim hides the YouTube Shorts watermark baked into the thumbnail */
+    .yt-play-overlay::after{
+      content:"";
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse 70% 55% at center, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.6) 38%, rgba(0,0,0,0.15) 78%, rgba(0,0,0,0) 100%);
+      pointer-events:none;
+      z-index:1;
+    }
+    .yt-play-overlay .yt-play-icon{
+      position:relative;
+      display:block;
+      width:25.5%; max-width:128px; aspect-ratio:1/1;
+      filter:drop-shadow(0 12px 30px rgba(0,0,0,0.6));
+      transition:transform .2s ease;
+      z-index:2;
+    }
+    .yt-play-overlay .yt-play-icon svg{
+      width:100%; height:100%; display:block;
+    }
+    .yt-play-overlay:hover .yt-play-icon,
+    .yt-play-overlay:focus-visible .yt-play-icon{
+      transform:scale(1.07);
+    }
+    .yt-play-overlay.is-hidden{
+      opacity:0; pointer-events:none;
+    }
     .hero-vertical-stack .store-buttons{
       gap:24px;
       flex-wrap:wrap;
@@ -134,7 +175,15 @@ function gtag_report_conversion(url) {
   <div class="container">
     <div class="hero-vertical-stack">
       <div class="yt-vertical">
-        <iframe id="ytplayer" src="https://www.youtube-nocookie.com/embed/XuwDQBHoL8k?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="PlanBoards explainer video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <button class="yt-play-overlay" type="button" aria-label="Play PlanBoards explainer video" data-yt-id="XuwDQBHoL8k">
+          <img class="yt-poster-img" src="https://i.ytimg.com/vi/XuwDQBHoL8k/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/XuwDQBHoL8k/hqdefault.jpg';" alt="" aria-hidden="true">
+          <span class="yt-play-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="881 381 1238 1238" aria-hidden="true" focusable="false">
+              <path fill="#FF3038" d="M2118.8948,1000.0249c0,112.2377-27.6687,215.7882-82.9716,310.6416c-55.3427,94.8085-130.4432,169.9089-225.2468,225.2119c-94.8086,55.3376-198.354,83.0215-310.6465,83.0215H1500c-112.2775-0.0051-215.8181-27.6888-310.6615-83.0215c-94.8085-55.303-169.8692-130.4034-225.2119-225.2119c-55.3527-94.8534-83.0215-198.4039-83.0215-310.6416c0-112.2875,27.6688-215.8381,83.0215-310.6914c55.3427-94.8085,130.4034-169.9091,225.2617-225.2119C1284.1819,408.7838,1387.7225,381.105,1500,381.1h0.0299c112.2925,0,215.8379,27.6788,310.6465,83.0215c94.8434,55.3527,169.9042,130.4035,225.2468,225.2119C2091.2261,784.137,2118.8948,887.7374,2118.8948,1000.0249z"/>
+              <path fill="#FFFFFF" d="M1823.1161,1000.3131c0,19.2674-8.3438,33.6261-25.0458,43.0039l-425.6863,250.4286c-7.8268,4.6913-16.1851,7.0344-25.0409,7.0344c-8.3438,0-16.702-2.1017-25.0458-6.2808c-16.7019-9.8898-25.0457-24.4803-25.0457-43.8058V749.8844c0-19.2819,8.3438-33.9161,25.0457-43.8059c17.2142-9.3777,33.9016-9.1506,50.0867,0.7537l425.6863,250.4286C1814.7723,966.6385,1823.1161,980.9974,1823.1161,1000.3131z"/>
+            </svg>
+          </span>
+        </button>
       </div>
       <div class="store-buttons">
         <a class="store-badge" href="https://apps.apple.com/th/app/planboards-todo-notes/id6758831916" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
@@ -301,5 +350,25 @@ function gtag_report_conversion(url) {
 </section>
 
 <footer class="footer"><div class="container">PlanBoards: ToDo & Notes • Visual task management for life, family, and work.</div></footer>
+<script>
+(function(){
+  var btn = document.querySelector('.yt-play-overlay[data-yt-id]');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    if (typeof gtag_report_conversion === 'function') {
+      try { gtag_report_conversion(); } catch(e) {}
+    }
+    var id = btn.getAttribute('data-yt-id');
+    var iframe = document.createElement('iframe');
+    iframe.id = 'ytplayer';
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&autoplay=1';
+    iframe.title = 'PlanBoards explainer video';
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    iframe.setAttribute('allowfullscreen', '');
+    btn.replaceWith(iframe);
+  }, { once: true });
+})();
+</script>
 <script src="script.js?v=3"></script>
 </body></html>
