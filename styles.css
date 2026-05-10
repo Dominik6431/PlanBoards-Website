@@ -55,7 +55,7 @@ img,video{max-width:100%;display:block}
 .stat strong{display:block;font-size:1.45rem;font-weight:550;letter-spacing:-.03em}
 .stat span{color:var(--muted);font-size:.94rem}
 .section{padding:62px 0}
-.section-tight{padding:46px 0 170px}
+.section-tight{padding:46px 0 10px}
 .section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:20px}
 .section-head h2{font-size:clamp(1.9rem,3vw,3rem);line-height:1.12;letter-spacing:0;font-weight:500;margin:0}
 .section-head p{max-width:660px;color:var(--muted);margin:0}
@@ -134,9 +134,9 @@ img,video{max-width:100%;display:block}
 .placeholder-shot.small{aspect-ratio:16/10;min-height:220px}
 .feature-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px}
 .feature-gallery .feature-card p{min-height:48px}
-.reveal{opacity:0;transform:translateY(20px);filter:blur(6px);transition:opacity .7s ease, transform .7s ease, filter .7s ease}
+/* Scroll reveal disabled site-wide: sections render instantly like standard HTML. */
+.reveal{opacity:1;transform:none;filter:none;transition:none}
 .reveal.in-view{opacity:1;transform:none;filter:none}
-@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}}
 @media (max-width: 1100px){.feature-gallery{grid-template-columns:repeat(2,1fr)}.crop-desktop-hero{height:380px}}
 @media (max-width: 860px){.hero-panel{display:none}.feature-gallery{grid-template-columns:1fr}.hero-art{min-height:620px}.stack-card .crop-phone-tight{max-height:640px}.crop-desktop-hero{height:320px}}
 @media (max-width: 560px){.section-surface{padding:18px;border-radius:24px}.hero h1,.page-hero h1{line-height:1.12}.hero-art{min-height:500px}}
@@ -270,6 +270,15 @@ img,video{max-width:100%;display:block}
 .store-badge img{
   height:72px;
   width:auto;
+}
+/* App Store / Google Play strip placed just above the site footer.
+   Uses ~70px top/bottom padding so the badges sit ~70px below the last
+   page content and ~70px above the footer line. */
+.footer-store-strip{
+  padding:70px 0;
+}
+.footer-store-strip .store-buttons{
+  flex-wrap:wrap;
 }
 .cta-row-stores .btn.primary{
   margin-top:1rem;
