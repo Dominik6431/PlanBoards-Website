@@ -36,6 +36,18 @@ function gtag_report_conversion(url) {
   <link rel="icon" href="assets/Logo-Square-512px-Image.png">
   <link rel="stylesheet" href="styles.css?v=15">
   <style>
+    /* Page-scoped: add ~30px horizontal breathing room around text blocks in
+       the body sections. Combined with the global 16px .container gutter
+       (width:min(1180px, calc(100% - 32px))), headings, paragraphs, and grids
+       end up ~30px from each screen edge so they do not sit flush against
+       the side. The hero, footer, and store-badge strip keep their own
+       layout untouched. */
+    .section > .container,
+    .section-tight > .container{
+      padding-left:14px;
+      padding-right:14px;
+    }
+
     /* Page-scoped: mobile1 vertical-video hero */
     .hero-vertical-video{
       padding:14px 0 22px;
@@ -134,7 +146,7 @@ function gtag_report_conversion(url) {
   <div class="container">
     <div class="hero-vertical-stack">
       <div class="yt-vertical">
-        <iframe id="ytplayer" src="https://www.youtube-nocookie.com/embed/XuwDQBHoL8k?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" title="PlanBoards explainer video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe id="ytplayer" src="https://www.youtube-nocookie.com/embed/XuwDQBHoL8k?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&autoplay=1&mute=1" title="PlanBoards explainer video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="store-buttons">
         <a class="store-badge" href="https://apps.apple.com/th/app/planboards-todo-notes/id6758831916" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
@@ -296,7 +308,6 @@ function gtag_report_conversion(url) {
     <div class="logo-strip" style="justify-content:center;margin-bottom:16px"><span class="logo-pill">14-day free trial</span><span class="logo-pill">$3.99 / month</span><span class="logo-pill">$39 / year</span></div>
     <h2 style="font-size:clamp(2rem,3vw,3.2rem);font-weight:500;letter-spacing:0;line-height:1.12">Start with the visual workflow you already understand.</h2>
     <p style="max-width:760px;margin:12px auto 24px;color:var(--muted)">Boards, lists, and cards feel familiar - but PlanBoards makes them richer, more visual, and easier to share.</p>
-    <div class="cta-row" style="justify-content:center"><a class="btn primary" href="pricing.html" data-conversion>Start Free (14 days)</a></div>
   </div>
 </section>
 
