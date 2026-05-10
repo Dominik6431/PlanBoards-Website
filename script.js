@@ -6,8 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => panel.classList.toggle('open'));
   }
 
-  // Google Ads "ItemClicked" conversion tracking via event delegation
-  const conversionSelector = '.nav-links a, .mobile-panel a, .store-badge, [data-conversion]';
+  // Google Ads conversion tracking via event delegation.
+  // Only fires for clicks on the App Store / Google Play badges and on links
+  // inside the hamburger (mobile) menu. Desktop top-nav links, [data-conversion]
+  // CTAs, and YouTube video plays no longer fire a conversion.
+  const conversionSelector = '.store-badge, .mobile-panel a';
   document.addEventListener('click', (e) => {
     const target = e.target.closest(conversionSelector);
     if (!target) return;
@@ -21,31 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     gtag_report_conversion(target.href);
   });
-
-  // Google Ads "ItemClicked" conversion tracking for the YouTube hero video
-  const ytIframe = document.getElementById('ytplayer');
-  if (ytIframe && window.YT === undefined) {
-    const ytScript = document.createElement('script');
-    ytScript.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(ytScript);
-  }
-  window.onYouTubeIframeAPIReady = function () {
-    const iframe = document.getElementById('ytplayer');
-    if (!iframe || !window.YT || !window.YT.Player) return;
-    let conversionSent = false;
-    new window.YT.Player('ytplayer', {
-      events: {
-        'onStateChange': (event) => {
-          if (event.data === 1 && !conversionSent) {
-            conversionSent = true;
-            if (typeof gtag_report_conversion === 'function') {
-              gtag_report_conversion();
-            }
-          }
-        }
-      }
-    });
-  };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
