@@ -6,25 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => panel.classList.toggle('open'));
   }
 
-  // Google Ads conversion tracking via event delegation.
-  // Only fires for clicks on the App Store / Google Play badges and on links
-  // inside the hamburger (mobile) menu. Desktop top-nav links, [data-conversion]
-  // CTAs, and YouTube video plays no longer fire a conversion.
-  const conversionSelector = '.store-badge, .mobile-panel a';
-  document.addEventListener('click', (e) => {
-    const target = e.target.closest(conversionSelector);
-    if (!target) return;
-    if (typeof gtag_report_conversion !== 'function') return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button > 0) return;
-    if (target.target === '_blank') {
-      // Let the browser open the new tab; just fire the conversion event.
-      gtag_report_conversion();
-      return;
-    }
-    e.preventDefault();
-    gtag_report_conversion(target.href);
-  });
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
