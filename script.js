@@ -39,6 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
+  const heroBadge = document.querySelector('.ph-badge-home');
+  const headerBadge = document.querySelector('[data-ph-badge-header]');
+  if (heroBadge && headerBadge) {
+    const header = document.querySelector('.site-header');
+    const updateBadgeState = () => {
+      const headerH = header ? header.getBoundingClientRect().height : 64;
+      const heroBadgeBottom = heroBadge.getBoundingClientRect().bottom;
+      // Show the small header badge only once the in-hero badge has scrolled
+      // up behind the sticky top bar.
+      headerBadge.classList.toggle('is-visible', heroBadgeBottom <= headerH);
+    };
+    updateBadgeState();
+    window.addEventListener('scroll', updateBadgeState, { passive: true });
+    window.addEventListener('resize', updateBadgeState);
+  }
+
   const contactForm = document.querySelector('[data-contact-form]');
   if (contactForm) {
     const status = document.querySelector('[data-contact-status]');
