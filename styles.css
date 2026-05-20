@@ -150,7 +150,7 @@ img,video{max-width:100%;display:block}
     radial-gradient(circle at 88% 10%, rgba(0,204,255,.15), transparent 18%),
     linear-gradient(180deg,#08101c 0%, #060a12 100%);
 }
-.ph-badge-home{display:inline-block;margin:18px 0 10px;line-height:0}
+.ph-badge-home{display:block;width:fit-content;margin:18px auto 10px;line-height:0}
 .ph-badge-home img{height:54px;width:auto}
 .nav-left{display:flex;align-items:center;gap:0;min-width:0}
 .ph-badge-header{display:inline-block;line-height:0;opacity:0;max-width:0;margin-left:0;overflow:hidden;pointer-events:none;transition:opacity .22s ease,max-width .25s ease,margin-left .25s ease}
