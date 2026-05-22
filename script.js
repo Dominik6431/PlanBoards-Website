@@ -6,6 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => panel.classList.toggle('open'));
   }
 
+  // Send a GA4 virtual pageview whenever any Product Hunt badge is clicked
+  // (the in-hero badge or the small top-bar badge that appears on scroll).
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.ph-badge-home, .ph-badge-header')) return;
+    const payload = {
+      page_title: 'Clicked Product Hunt Button',
+      page_location: window.location.href,
+      page_path: '/virtual/clicked-product-hunt-button'
+    };
+    if (typeof gtag === 'function') {
+      gtag('event', 'page_view', payload);
+    }
+    if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+      window.dataLayer.push({ event: 'virtual_pageview', ...payload });
+    }
+  });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
