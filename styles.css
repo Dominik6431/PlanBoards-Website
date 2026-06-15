@@ -152,6 +152,10 @@ img,video{max-width:100%;display:block}
 }
 .ph-badge-home{display:block;width:fit-content;margin:18px auto 10px;line-height:0}
 .ph-badge-home img{height:54px;width:auto}
+/* ===== TEMPORARILY HIDE PRODUCT HUNT BADGE (remove this block to unhide) ===== */
+.ph-badge-home,
+.ph-badge-header{display:none !important}
+/* ===== END TEMPORARILY HIDE PRODUCT HUNT BADGE ===== */
 .nav-left{display:flex;align-items:center;gap:0;min-width:0}
 .ph-badge-header{display:inline-block;line-height:0;opacity:0;max-width:0;margin-left:0;overflow:hidden;pointer-events:none;transition:opacity .22s ease,max-width .25s ease,margin-left .25s ease}
 .ph-badge-header img{height:32px;width:auto;display:block}
